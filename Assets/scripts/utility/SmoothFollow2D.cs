@@ -3,12 +3,10 @@ using System.Collections;
 
 public class SmoothFollow2D : MonoBehaviour {
      public Transform Target;
-     public Vector3 Offset;
-     public float Velocity;
-     public float MinDistance;
-     
-     // Update is called once per frame
-     void LateUpdate () {
+    public float Velocity;
+    public Vector3 Offset;
+    public float MinDistance;
+    void LateUpdate () {
         if (Target == null)
         {
 			 return;
