@@ -45,6 +45,9 @@ public class Player : Character
         {
             Interactions.NearTeleport.Activate(gameObject);
         }
+        else if (Interactions.NearNPC != null) {
+            Interactions.NearNPC.Say();
+        }
         else if (Interactions.NearLadder)
         {
             Climb();
