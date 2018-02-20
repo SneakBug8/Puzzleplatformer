@@ -39,11 +39,6 @@ public class Character : MonoBehaviour
         rigidbody.AddForce(Vector2.up * JumpSpeed);
     }
 
-    protected void Climb() {
-        transform.Translate(new Vector2(0,1) / 2 * Time.deltaTime * Speed, Space.World);
-        rigidbody.velocity = Vector2.zero;         
-    }
-
 #region Directions
 
     void ChangeDirection(string reason = "")

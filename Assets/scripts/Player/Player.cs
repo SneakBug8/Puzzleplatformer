@@ -22,6 +22,7 @@ public class Player : Character
 
     public List<string> Keys = new List<string>();
     public UnityEvent OnKeysChange = new UnityEvent();
+    public Interactable Interactable;
     protected virtual void Update()
     {
         var xmove = Input.GetAxis("Horizontal");
@@ -36,22 +37,7 @@ public class Player : Character
 
         if (Input.GetAxis("Vertical") > 0)
         {
-            Interact();
-        }
-    }
-
-    void Interact()
-    {
-        if (Interactions.NearTeleport != null)
-        {
-            Interactions.NearTeleport.Activate(gameObject);
-        }
-        else if (Interactions.NearNPC != null) {
-            Interactions.NearNPC.Say();
-        }
-        else if (Interactions.NearLadder)
-        {
-            Climb();
+            Interactable.Interact();
         }
     }
 
