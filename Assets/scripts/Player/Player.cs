@@ -47,12 +47,6 @@ public class Player : Character
         Move(direction: normalizedmove);
     }
 
-    void Activate()
-    {
-
-    }
-
-
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.gameObject.tag == "Exit")
