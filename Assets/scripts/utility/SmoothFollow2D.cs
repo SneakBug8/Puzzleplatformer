@@ -9,7 +9,7 @@ public class SmoothFollow2D : MonoBehaviour {
     void LateUpdate () {
         if (Target == null)
         {
-			 return;
+			return;
 		}
 
 		var targetPos = Target.transform.position + Offset;

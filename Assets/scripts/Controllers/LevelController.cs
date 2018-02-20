@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     public GameObject LostView;
     public GameObject PlayerObject;
     public bool LevelEnded = false;
+    public Dictionary<string, Sprite> KeySprites = new Dictionary<string, Sprite>();    
 
     // Use this for initialization
     void Awake()

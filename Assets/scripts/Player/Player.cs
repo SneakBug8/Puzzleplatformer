@@ -21,6 +21,7 @@ public class Player : Character
     public PlayerInteractions Interactions = new PlayerInteractions();
 
     public List<string> Keys = new List<string>();
+    public UnityEvent OnKeysChange = new UnityEvent();
     protected virtual void Update()
     {
         var xmove = Input.GetAxis("Horizontal");
