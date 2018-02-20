@@ -18,8 +18,6 @@ public class Player : Character
     }
 
     // Update is called once per frame
-    public PlayerInteractions Interactions = new PlayerInteractions();
-
     public List<string> Keys = new List<string>();
     public UnityEvent OnKeysChange = new UnityEvent();
     public Interactable Interactable;
