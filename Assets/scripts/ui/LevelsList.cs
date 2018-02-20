@@ -12,16 +12,24 @@ namespace UI
 
         void OnEnable()
         {
-            var levels = MainController.Global.levelcount;
+            var MaxLevel = Config.LevelCount;
 
-            for (int i = 0; i < levels; i++)
+            for (int i = 0; i < MaxLevel; i++)
             {
                 var button = Instantiate(Button);
                 button.transform.SetParent(transform, false);
 
                 var btncomponent = button.GetComponent(typeof(Button)) as Button;
-                
-                btncomponent.onClick.AddListener(delegate {int local_i = i; MainController.Global.LoadLevel(local_i);});
+
+                if (MainController.NextLevelId >= i)
+                {
+
+                    btncomponent.onClick.AddListener(delegate { int local_i = i; MainController.LoadLevel(local_i); });
+                }
+                else
+                {
+                    btncomponent.interactable = false;
+                }
 
                 var textcomponent = button.GetComponentInChildren(typeof(Text)) as Text;
                 textcomponent.text = i.ToString();

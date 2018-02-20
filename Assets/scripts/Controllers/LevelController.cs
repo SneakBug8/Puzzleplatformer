@@ -8,39 +8,33 @@ public class LevelController : MonoBehaviour
     public static LevelController Global;
     public GameObject WinView;
     public GameObject LostView;
-    public GameObject PlayerObject;
-    public bool LevelEnded = false;
-    public Dictionary<string, Sprite> KeySprites = new Dictionary<string, Sprite>();    
+    public Dictionary<string, Sprite> KeySprites = new Dictionary<string, Sprite>();
 
     // Use this for initialization
     void Awake()
     {
         Global = this;
-        
+
         Time.timeScale = 1;
     }
-    void Start() {
+    void Start()
+    {
         Player.Global.OnDeath.AddListener(OnLose);
     }
     public void OnVictory()
     {
-        if (!LevelEnded)
-        {
-            LevelEnded = true;
-            WinView.SetActive(true);
-            Time.timeScale = 0f;
+        Player.Global.enabled = false;
+        WinView.SetActive(true);
+        Time.timeScale = 0f;
 
-            MainController.Global.Level++;
-        }
+        MainController.NextLevelId++;
     }
 
     public void OnLose()
     {
-        if (!LevelEnded)
-        {
-            LevelEnded = true;
-            LostView.SetActive(true);
-            Time.timeScale = 0;            
-        }
+        Player.Global.enabled = false;
+        
+        LostView.SetActive(true);
+        Time.timeScale = 0;
     }
 }

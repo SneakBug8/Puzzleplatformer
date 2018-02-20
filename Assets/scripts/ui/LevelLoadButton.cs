@@ -21,15 +21,15 @@ namespace UI
         {
             if (level >= 0)
             {
-                MainController.Global.LoadLevel(level);
+                MainController.LoadLevel(level);
             }
             else if (level == -1)
             {
-                MainController.Global.LoadLevel();
+                MainController.LoadLevel();
             }
             else if (level == -2)
             {
-                MainController.Global.ReloadLevel();
+                MainController.ReloadLevel();
             }
         }
     }
