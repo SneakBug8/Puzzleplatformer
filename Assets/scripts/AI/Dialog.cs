@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dialog : MonoBehaviour {
+public class Dialog : Interactable {
     public string[] Phrases;
 
     int curphrase = 0;
@@ -9,7 +9,7 @@ public class Dialog : MonoBehaviour {
     public GameObject SayBubble;
     public Text Text;
 
-    public void Say() {
+    public override void Interact() {
         Say(curphrase);
         curphrase++;
     }
@@ -17,17 +17,5 @@ public class Dialog : MonoBehaviour {
     void Say(int phrase) {
         Text.text = Phrases[phrase];
         SayBubble.SetActive(true);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject == Player.Global.gameObject) {
-            Player.Global.Interactions.NearNPC = this;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject == Player.Global.gameObject) {
-            Player.Global.Interactions.NearNPC = null;            
-        }
     }
 }
