@@ -9,8 +9,8 @@ namespace UI
 {
     public class LevelLoadButton : MonoBehaviour
     {
-
-        public int level;
+        public Levels level;
+        public int CustomLevelId;
         void Start()
         {
             var buttoncomp = gameObject.GetComponent(typeof(Button)) as Button;
@@ -19,18 +19,28 @@ namespace UI
 
         void OnClick()
         {
-            if (level >= 0)
-            {
-                MainController.LoadLevel(level);
-            }
-            else if (level == -1)
-            {
-                MainController.LoadLevel();
-            }
-            else if (level == -2)
-            {
-                MainController.ReloadLevel();
+            switch (level) {
+                case Levels.PreviousLevel:
+                    MainController.LoadLevel(MainController.LastUnlockedLevelId - 1);
+                    break;
+                case Levels.CurrentLevel: 
+                    MainController.LoadLevel(MainController.LastUnlockedLevelId);
+                    break;
+                case Levels.NextLevel:
+                    MainController.LastUnlockedLevelId++;
+                    MainController.LoadLevel(MainController.LastUnlockedLevelId);
+                    break;
+                case Levels.CustomId:
+                    if (CustomLevelId > MainController.LastUnlockedLevelId) {
+                        MainController.LastUnlockedLevelId = CustomLevelId;
+                    }
+                    MainController.LoadLevel(CustomLevelId);
+                    break;
             }
         }
+    }
+
+    public enum Levels {
+        PreviousLevel, CurrentLevel, NextLevel, CustomId
     }
 }

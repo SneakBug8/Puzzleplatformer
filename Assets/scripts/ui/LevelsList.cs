@@ -21,7 +21,7 @@ namespace UI
 
                 var btncomponent = button.GetComponent(typeof(Button)) as Button;
 
-                if (MainController.NextLevelId >= i)
+                if (MainController.LastUnlockedLevelId >= i)
                 {
 
                     btncomponent.onClick.AddListener(delegate { int local_i = i; MainController.LoadLevel(local_i); });

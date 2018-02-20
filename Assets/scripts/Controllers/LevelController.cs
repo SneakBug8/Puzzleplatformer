@@ -26,8 +26,6 @@ public class LevelController : MonoBehaviour
         Player.Global.enabled = false;
         WinView.SetActive(true);
         Time.timeScale = 0f;
-
-        MainController.NextLevelId++;
     }
 
     public void OnLose()
