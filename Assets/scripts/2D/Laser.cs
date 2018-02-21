@@ -19,6 +19,12 @@ public class Laser : MonoBehaviour {
         }
         foreach (var rigidbody in Rigidbodies) {
             rigidbody.velocity = rigidbody.velocity / 2;
+            rigidbody.transform.localScale =
+            Vector3.Lerp(rigidbody.transform.localScale, Vector3.zero, 0.01f);
+
+            if (rigidbody.transform.localScale.magnitude < 0.5f && rigidbody.gameObject != Player.Global.gameObject) {
+                Destroy(rigidbody.gameObject);
+            }
         }
     }
 
@@ -26,9 +32,6 @@ public class Laser : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject == Player.Global.gameObject) {
             Player.Global.Die();
-        }
-        else {
-            Destroy(other.gameObject);
         }
     }
 }

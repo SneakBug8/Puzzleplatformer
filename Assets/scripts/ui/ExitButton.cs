@@ -7,7 +7,7 @@ namespace UI
     {
         void Start()
         {
-            var buttoncomp = gameObject.GetComponent(typeof(Button)) as Button;
+            var buttoncomp = gameObject.GetComponent<Button>();
             buttoncomp.onClick.AddListener(OnClick);
         }
         void OnClick()
