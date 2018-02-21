@@ -5,7 +5,7 @@ using UnityEngine;
 public class LogicalLaserGenerator : LogicalEnd
 {
     public bool AutoRelaunch;
-    protected GameObject Laser;
+    public GameObject Laser;
     public bool ChangeState;
 	public bool Inverse;
 

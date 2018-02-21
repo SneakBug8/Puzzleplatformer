@@ -23,16 +23,16 @@ public class LevelController : MonoBehaviour
     }
     public void OnVictory()
     {
+        Time.timeScale = 0f;
         Player.Global.enabled = false;
         WinView.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void OnLose()
     {
-        Player.Global.enabled = false;
+        Time.timeScale = 0;
+        Player.Global.gameObject.SetActive(false);
         
         LostView.SetActive(true);
-        Time.timeScale = 0;
     }
 }
