@@ -99,15 +99,15 @@ Shader "UI/BlinkingBox"
             sampler2D _MainTex;
 			sampler2D _NoiseTex;
 
-            fixed4 frag(v2f IN) : SV_Target
+            fixed4 frag(v2f In) : SV_Target
             {
-				float2 offset = float2(
-					tex2D(_NoiseTex, float2(IN.worldPosition.y / 5 + sin(_Time[1]), 0)).r,
-					tex2D(_NoiseTex, float2(0, IN.worldPosition.x / 5 + sin(_Time[1]))).r
-				);
+                float2 offset = float2(
+                    tex2D(_NoiseTex, float2(In.worldPosition.y / 30, _Time[1] / 20)).r,
+                    tex2D(_NoiseTex, float2(_Time[1] / 20, In.worldPosition.x / 30)).r
+                );     
+                offset -= 0.5;
 
-				offset -= 0.5f;
-                half4 color = (tex2D(_MainTex, IN.texcoord + offset / 20) + _TextureSampleAdd) * IN.color;
+                half4 color = tex2D(_MainTex, In.texcoord + offset / 20);
 
                 #ifdef UNITY_UI_CLIP_RECT
                 color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
