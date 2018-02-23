@@ -10,6 +10,8 @@ public class LevelController : MonoBehaviour
     public GameObject LostView;
     public Dictionary<string, Sprite> KeySprites = new Dictionary<string, Sprite>();
 
+    public int LevelId;
+
     // Use this for initialization
     void Awake()
     {
@@ -26,6 +28,10 @@ public class LevelController : MonoBehaviour
         Time.timeScale = 0f;
         Player.Global.enabled = false;
         WinView.SetActive(true);
+
+        if (MainController.LastCompletedLevelId < LevelId) {
+            MainController.LastCompletedLevelId = LevelId;
+        }
     }
 
     public void OnLose()

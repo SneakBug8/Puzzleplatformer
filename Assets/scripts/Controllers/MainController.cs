@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 
 public static class MainController {
-    public static int LastUnlockedLevelId {
+    public static int LastCompletedLevelId {
         get {
             return PlayerPrefs.GetInt("level", 0);
     }
@@ -10,26 +10,20 @@ public static class MainController {
             PlayerPrefs.SetInt("level", value);
     }}
 
+    public static int CurrentLevelId {
+        get {
+            return int.Parse(SceneManager.GetActiveScene().name);
+        }
+    }
+
     public static void LoadLevel(int level)
     {
         if (level >= Config.LevelCount)
         {
             SceneManager.LoadScene("menu");
-            return;
         }
-        LastUnlockedLevelId = level;
-        PlayerPrefs.SetInt("level", LastUnlockedLevelId);
 
-        SceneManager.LoadScene(LastUnlockedLevelId.ToString());
-    }
-
-    public static void LoadLevel()
-    {
-        if (LastUnlockedLevelId >= Config.LevelCount)
-        {
-            LastUnlockedLevelId = 0;
-        }
-        LoadLevel(LastUnlockedLevelId);
+        SceneManager.LoadScene(level.ToString());
     }
 
     public static void ReloadLevel()

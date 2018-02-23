@@ -21,19 +21,15 @@ namespace UI
         {
             switch (level) {
                 case Levels.PreviousLevel:
-                    MainController.LoadLevel(MainController.LastUnlockedLevelId - 1);
+                    MainController.LoadLevel(MainController.CurrentLevelId - 1);
                     break;
                 case Levels.CurrentLevel: 
-                    MainController.LoadLevel(MainController.LastUnlockedLevelId);
+                    MainController.LoadLevel(MainController.CurrentLevelId);
                     break;
                 case Levels.NextLevel:
-                    MainController.LastUnlockedLevelId++;
-                    MainController.LoadLevel(MainController.LastUnlockedLevelId);
+                    MainController.LoadLevel(MainController.CurrentLevelId + 1);
                     break;
                 case Levels.CustomId:
-                    if (CustomLevelId > MainController.LastUnlockedLevelId) {
-                        MainController.LastUnlockedLevelId = CustomLevelId;
-                    }
                     MainController.LoadLevel(CustomLevelId);
                     break;
             }
