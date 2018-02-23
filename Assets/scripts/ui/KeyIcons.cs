@@ -14,6 +14,10 @@ namespace UI
             Player.Global.OnKeysChange.AddListener(RenderIcons);
         }
 
+        private void OnEnable() {
+            RenderIcons();
+        }
+
         public void RenderIcons()
         {
             var keys = Player.Global.Keys;
