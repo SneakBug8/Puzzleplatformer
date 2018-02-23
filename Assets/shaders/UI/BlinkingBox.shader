@@ -102,8 +102,8 @@ Shader "UI/BlinkingBox"
             fixed4 frag(v2f In) : SV_Target
             {
                 float2 offset = float2(
-                    tex2D(_NoiseTex, float2(In.worldPosition.y / 30, _Time[1] / 20)).r,
-                    tex2D(_NoiseTex, float2(_Time[1] / 20, In.worldPosition.x / 30)).r
+                    tex2D(_NoiseTex, float2(In.worldPosition.y / 40, _Time[1] / 10)).r,
+                    tex2D(_NoiseTex, float2(_Time[1] / 10, In.worldPosition.x / 40)).r
                 );     
                 offset -= 0.5;
 
