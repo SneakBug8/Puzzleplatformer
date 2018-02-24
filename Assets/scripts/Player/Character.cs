@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     public float JumpSpeed = 1f;
     public float Speed = 1F;
     public UnityEvent OnDeath = new UnityEvent();
+    public bool CanMove = true;
     protected virtual void Start()
     {
         Renderer = gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
@@ -24,6 +25,7 @@ public class Character : MonoBehaviour
     }
     protected void Move(int direction = 0, float mod = 1)
     {
+        if (!CanMove) { return; }
         if (direction != 0)
         {
             ChangeDirection(direction);
@@ -34,6 +36,7 @@ public class Character : MonoBehaviour
 
     protected void Jump()
     {
+        if (!CanMove) { return; }
         rigidbody.AddForce(Vector2.up * JumpSpeed);
     }
 
