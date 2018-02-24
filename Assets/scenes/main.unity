@@ -737,6 +737,8 @@ GameObject:
   - component: {fileID: 386614782}
   - component: {fileID: 386614784}
   - component: {fileID: 386614783}
+  - component: {fileID: 386614785}
+  - component: {fileID: 386614786}
   m_Layer: 0
   m_Name: TextTrigger
   m_TagString: Untagged
@@ -770,6 +772,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextString: Hello, world!
   Text: {fileID: 1371721708}
+  Triggers:
+  - {fileID: 386614785}
+  - {fileID: 386614786}
+  LogicalAction: 1
+  ActiveOnce: 1
 --- !u!61 &386614784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -795,6 +802,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &386614785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386614781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9ff4f3987d21844840d2e12be68cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &386614786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386614781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57938e7a27b0f341a4688b69e88bc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: 118
 --- !u!1 &413848409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1469,7 @@ MonoBehaviour:
   MapSize: 30
   MiniMap: {fileID: 620283226}
   SwitchOnClick: 1
-  PreventPlayerMoving: 0
+  PreventPlayerMoving: 1
 --- !u!1 &646755843
 GameObject:
   m_ObjectHideFlags: 0
