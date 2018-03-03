@@ -16,6 +16,10 @@ public class LogicalElement : MonoBehaviour {
 
 	public UnityEvent OnChange;
 
+	public virtual void OnDrawGizmosSelected() {
+		
+	}
+
 	public Color Color {
 		get {
 			if (Return) {

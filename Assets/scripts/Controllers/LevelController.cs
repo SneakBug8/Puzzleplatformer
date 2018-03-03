@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using UI;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -39,6 +38,11 @@ public class LevelController : MonoBehaviour
         Time.timeScale = 0;
         Player.Global.gameObject.SetActive(false);
         
-        LostView.SetActive(true);
+        if (LostView != null) {
+            LostView.SetActive(true);
+        }
+        else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
