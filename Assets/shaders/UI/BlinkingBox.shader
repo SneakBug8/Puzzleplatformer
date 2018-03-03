@@ -110,7 +110,7 @@ Shader "UI/BlinkingBox"
                 half4 color = tex2D(_MainTex, In.texcoord + offset / 20);
 
                 #ifdef UNITY_UI_CLIP_RECT
-                color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+                color.a *= UnityGet2DClipping(In.worldPosition.xy, _ClipRect);
                 #endif
 
                 #ifdef UNITY_UI_ALPHACLIP
